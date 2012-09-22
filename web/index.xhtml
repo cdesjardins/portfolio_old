@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>Chris Desjardins</title>
+        <h:outputStylesheet library="css" name="portfolio.css" />
+    </h:head>
+    <h:body >
+        <h:form>
+            <h:panelGrid columns="1" cellpadding="10" width="800px" styleClass="centered ui-widget-content">
+                <ui:include src="header.xhtml" />
+                <h:panelGrid columns="2" cellpadding="1" >
+                    <ui:include src="links.xhtml" />
+                    <p:tabView id="tabView" effect="fade" effectDuration="normal" style="width: 100%">
+                        <p:tab id="tab1" title="Home"> 
+                            <ui:include src="summary.xhtml" />
+                        </p:tab>
+                        <p:tab id="tab2" title="Tekelec"> 
+                            <ui:include src="tekelec.xhtml" />
+                        </p:tab>
+                        <p:tab id="tab3" title="BOPS"> 
+                            <ui:include src="BOPS.xhtml" />
+                        </p:tab>
+                        <p:tab id="tab4" title="Beagle RC"> 
+                            <ui:include src="beaglerc.xhtml" />
+                        </p:tab>
+                        <p:tab id="tab5" title="Player Piano"> 
+                            <ui:include src="playerpiano.xhtml" />
+                        </p:tab>
+                        <p:tab id="tab6" title="Doorbell"> 
+                            <ui:include src="doorbell.xhtml" />
+                        </p:tab>
+                    </p:tabView>
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,46 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:outputText value="I wanted to try my hand at an HDL, so I decided to build a robot that can play simple songs on the piano. This project runs on the following hardware:"/>
+
+    <ul>
+        <li><h:outputText value="Gumstix overo"/></li>
+        <li><h:outputText value="Altera Cyclone-II (Pluto-3)"/></li>
+        <li><h:outputText value="2 Stepper motors"/></li>
+        <li><h:outputText value="2 RC Servos"/></li>
+        <li><h:outputText value="4 l293b H-Bridges"/></li>
+    </ul>
+
+    <h:outputText value="The code for this project is hosted on"/>
+    <p:button href="https://github.com/cdesjardins/PlayerPiano" value="Github"/><p/>
+    <h:outputText value="The idea here was to learn some VHDL, so I developed VHDL code (using quartus-II under linux) to drive both stepper motors, and servos. I created four 16bit registers in the FPGA which can be written from the gumstix overo ARM processor. Here is a high level over view of how the whole system works:"/>
+
+    <ul>
+        <li><h:outputText value="The ARM writes 8 gpios which are connected to input pins on the pluto-3 FPGA board."/></li>
+        <li><h:outputText value="The ARM then writes a clock gpio to cause the FPGA to latch the input pins."/></li>
+        <li><h:outputText value="Each register write is composed of the following three 8bit writes"/></li>
+        <ol>
+            <li><h:outputText value="is the register address."/></li>
+            <li><h:outputText value="is the low order byte of the data."/></li>
+            <li><h:outputText value="is the high order byte of the data."/></li>                
+        </ol>
+        <li><h:outputText value="There are four registers, one for each stepper and servo."/></li>
+        <li><h:outputText value="Writes to a stepper register indicates how many steps to take relative to the current position."/></li>
+        <li><h:outputText value="Writes to a servo register indicates the pulse width to drive to the servo."/></li>
+    </ul>
+    <h:panelGrid columns="1" cellpadding="10">
+        <h:outputText value="When it is all done the stepper motors will push or pull the servos down a small gantry system so that the servo can then strike the correct piano key."/>
+        <h:outputText value="The stepper motors are driven by the FPGA through the l293b H-Bridges from STMicroelectronics, the FPGA is setup so that four output pins are connected to the four H-Bridge input pins. Then the four H-Bridge output pins are connected to the stepper motors, I found that the steppers I have require about 1amp of current to run, and the H-Bridges are rated for 1amp max, so I used two H-Bridges hooked up in parallel to drive one stepper motor which effectively doubles the current the H-Bridges can handle. "/>
+        <h:outputText value="I also wrote code to program the FPGA from the gumstix overo, this makes the system more user friendly because when the fpga is powered off it loses it's configuration. There is a configurator/boot prom on the fpga board, but I didn't want to overwrite the default configuration so I decided to write my own programming code instead."/>
+    </h:panelGrid>
+    <h:panelGrid columns="1" cellpadding="10" styleClass="centered">
+        <p:media value="http://www.youtube.com/v/jQqlaYGPHF8" width="420" height="315" player="flash" />
+        <p:media value="http://www.youtube.com/v/me8qFkZvMrg" width="420" height="315" player="flash" />
+    </h:panelGrid>
+
+</ui:composition>
+

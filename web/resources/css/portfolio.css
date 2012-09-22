@@ -1,0 +1,24 @@
+/* 
+    Document   : portfolio
+    Created on : Sep 19, 2012, 9:38:34 PM
+    Author     : chrisd
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body
+{
+    background-color:#500000;
+}
+
+.centered {
+    margin: 0px auto;
+}
+
+td {
+    vertical-align: top;
+}

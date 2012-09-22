@@ -1,0 +1,49 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <p:accordionPanel activeIndex="-1" width="100%">
+        <p:tab title="Real time embedded OS work">
+            <h:panelGrid columns="1" cellpadding="10">
+                <h:outputText value="I participated in the development of a RTOS for an embedded DSP core with a distributed memory architecture and many levels of parallelism. The OS kernel was less than 700 words, but it had the ability to overlay code and data, schedule multiple concurrent threads, respond to I/O interrupts quickly, and it abstracted the DMA engine so the user did not have to write complex DMA transactions by hand."/>
+                <h:outputText value="My primary responsibilities were to help design and develop the host side component of the RTOS. The host component was basically an API that a programmer could use to perform various functions such as, load modules on to the DSP core, communicate with the DSP, interrupt the DSP, perform I/O with the DSP, and schedule threads for execution. Due to the fact that the RTOS was going to be used with many different host environments I also developed a very low level general I/O API that I ported to every host environment that BOPS supported (eCos, Windows, and Linux). This low level API made it very easy to develop BOPS DSP applications (such as the RTOS) that were targeted at more than one host system."/>
+                <h:panelGrid columns="2" cellpadding="10">
+                    <h:commandLink action="img/glTrace.jpg">
+                        <p:graphicImage height="250" value="img/glTrace.jpg" alt="glTrace"/>
+                    </h:commandLink>
+                    <h:outputText value="I also helped develop the tool used to compile the  binary image that was loaded onto the DSP core and executed. This tool worked by reading all of the necessary data in the object files produced from compiling the core software. Then it produced a binary image with all of the data from the object files formated in the way the DSP OS kernel expected. "/>
+                </h:panelGrid>
+                <h:outputText value="As a side project I wrote a small interactive visualization application for this RTOS. It simply interpreted the binary image produced from the RTOS build tool and displayed the memory regions in an OpenGL window. This was helpful because the module memory regions were not relocatable, which meant that in order to use memory most efficiently the programmer had to make sure that there were few memory spaces between modules (i.e. no memory fragmentation). This visualization tool showed the module layout in memory, and any fragmentation was easily identified. The programmer could then change the module layout to minimize the fragmentation."/>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Quake on BOPS DSP">
+            <h:panelGrid columns="1" cellpadding="10">
+                <h:outputText value="Below are some screenshots of 3D applications running on the BOPS DSP OpenGL driver the Embedded Applications team developed. They show our implementation of a highly optimized OpenGL driver running on a DSP core with many levels of parallelism. We did this by developing a dynamic link library that directed all OpenGL calls to the BOPS DSP core for processing, once the core was done processing the results of each frame were returned to the host computer where they were rasterized."/>
+                    <h:panelGrid columns="1" cellpadding="10" styleClass="centered">
+                        <h:commandLink action="img/quake.jpg">
+                            <p:graphicImage height="250" value="img/quake.jpg" alt="Quake"/>
+                        </h:commandLink>
+                    </h:panelGrid>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="OpenGL Lighting Model">
+            <h:panelGrid columns="1" cellpadding="10">
+                <h:outputText value="As a member of the Embedded Applications team I helped implement the  OpenGL driver for the BOPS DSP. I was primarily responsible for the OpenGL lighting model, but I also helped get Quake III running on the BOPS OpenGL driver. Once Quake was running I was responsible for maintaining it on new releases of the BOPS SDK, and BOPS API."/>
+                    <h:panelGrid columns="1" cellpadding="10" styleClass="centered">
+                        <h:commandLink action="img/LightingAppMain.gif">
+                            <p:graphicImage height="250" value="img/LightingAppMain.gif" alt="Lighting App"/>
+                        </h:commandLink>
+                    </h:panelGrid>
+                <h:outputText value="The next screenshot shows the configuration panel for the OpenGL lighting application, which has controls for all of the variables in the OpenGL lighting equation. I developed this application to prove that BOPS could process all 8 of the lights in the OpenGL spec. The 4 spheres in the top window danced around sinusoidally, and the 8 lights acted according to the settings in the lower window. The user could change any of the values in the control window and the OpenGL scene would be updated immediately."/>
+                <h:panelGrid columns="1" cellpadding="10" styleClass="centered">
+                    <h:commandLink action="img/LightingAppConsole.jpg">
+                        <p:graphicImage height="250" value="img/LightingAppConsole.jpg" alt="Lighting App Console"/>
+                    </h:commandLink>
+                </h:panelGrid>>
+            </h:panelGrid>
+        </p:tab>
+    </p:accordionPanel>
+        
+</ui:composition>

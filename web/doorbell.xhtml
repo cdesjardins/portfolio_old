@@ -1,0 +1,23 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:outputText value="For my next project I thought it would be cool to make a custom made doorbell for my house. I used the following items for this project: "/>
+    <ul>
+        <li><h:outputText value="The cheapest glockenspiel I could find on e-bay."/></li>
+        <li><h:outputText value="Arduino Duemilanove"/></li>
+        <li><h:outputText value="2 l293b H-Bridges"/></li>
+        <li><h:outputText value="8 small solenoids"/></li>
+    </ul>
+    <h:panelGrid columns="1" cellpadding="10" styleClass="centered">
+        <h:outputText value="To get the system running just connect 8 outputs from the arduino to the 8 h-bridge inputs (two h-bridges gives 8 inputs, and 8 outputs). Then connect one wire from each solenoid to ground, and the other wire from each solenoid to an output from the h-bridges. At this point you can control all solenoids from the arduino."/>
+        <h:outputText value="To get the solenoids to work as a result of a doorbell ring, you must install some kind of button. On the duemilanove all of the I/Os are floating, that is ok for the solenoids, but for the button input a pull-down resistor is needed. Once the button and pull down resistor are installed, an interrupt can be connected to the input line on a rising edge and when it fires you know someone has pushed the doorbell which means it is time to play a tune. "/>
+    </h:panelGrid>
+    <h:panelGrid columns="1" cellpadding="10" styleClass="centered">
+        <p:media value="http://www.youtube.com/v/X3yo5z44HFA" width="420" height="315" player="flash" />
+    </h:panelGrid>
+    <h:outputText value="The code for this project is hosted on"/>
+    <p:button href="https://github.com/cdesjardins/Doorbell" value="Github"/><p/>
+</ui:composition>
