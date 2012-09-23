@@ -14,6 +14,11 @@
     </h:head>
     <h:body >
         <h:form>
+            
+            <h:commandButton value="Welcome Me" rendered="false">
+            <f:ajax render="output" />
+            </h:commandButton>
+            <h:outputText id="output" value="#{commentsBean.name}" />
             <h:panelGrid columns="1" cellpadding="10" width="800px" styleClass="centered ui-widget-content">
                 <ui:include src="header.xhtml" />
                 <h:panelGrid columns="2" cellpadding="1" >
